@@ -19,8 +19,6 @@ namespace CadastroAniManga.Interfaces
                 - T: Item com identificador id
             Descrição:
                 - Retorna o item que possuir como número identificador o id passado
-                - Caso não exista um item com o id especificado, é apresentada uma mensagem indicando
-                  que o item não está presente na lista
         */
         T BuscaPorId(int id);
 
