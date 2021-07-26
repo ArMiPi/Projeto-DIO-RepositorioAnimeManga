@@ -5,6 +5,8 @@ namespace CadastroAniManga
 {
     public static class Operacoes
     {
+        const string NoAnimeIdError = "Nenhum anime com este id encontrado";
+        const string NoMangaIdError = "Nenhum manga com este id encontrado";
         static AnimeRepositorio anirep = new AnimeRepositorio();
         static MangaRepositorio manrep = new MangaRepositorio();
         public static void Menu()
@@ -49,16 +51,16 @@ namespace CadastroAniManga
                     AllMangas();
                     break;
                 case "7":
-                    //AnimeInfo();
+                    AnimeInfo();
                     break;
                 case "8":
-                    //MangaInfo();
+                    MangaInfo();
                     break;
                 case "9":
-                    //AtualizaAnime();
+                    //AtualizarAnime();
                     break;
                 case "10":
-                    //AtualizaManga();
+                    //AtualizarManga();
                     break;
                 case "C":
                     Console.Clear();
@@ -131,19 +133,6 @@ namespace CadastroAniManga
             Console.WriteLine("Manga adicionado");
         }
 
-        public static void AllAnimes()
-        {
-            Console.WriteLine("----- ALL ANIMES -----");
-            foreach(Animes a in anirep.Lista())
-            {
-                Console.Write($"#{a.Id} - {a.getTitulo()} ");
-                if(!a.getAtivo())
-                    Console.Write("**EXCLUÍDO**");
-                Console.WriteLine();
-            }
-            Console.WriteLine();
-        }
-
         public static void RmvAnime()
         {
             Console.WriteLine("----- REMOVER ANIME -----");
@@ -158,7 +147,7 @@ namespace CadastroAniManga
                 Console.WriteLine("Anime excluido");
             }
             else
-                Console.WriteLine("Nenhum anime com este id encontrado");
+                Console.WriteLine(NoAnimeIdError);
         }
 
         public static void RmvManga()
@@ -175,7 +164,20 @@ namespace CadastroAniManga
                 Console.WriteLine("Manga excluido");
             }
             else
-                Console.WriteLine("Nenhum manga com este id encontrado");
+                Console.WriteLine(NoMangaIdError);
+        }
+
+        public static void AllAnimes()
+        {
+            Console.WriteLine("----- ALL ANIMES -----");
+            foreach(Animes a in anirep.Lista())
+            {
+                Console.Write($"#{a.Id} - {a.getTitulo()} ");
+                if(!a.getAtivo())
+                    Console.Write("**EXCLUÍDO**");
+                Console.WriteLine();
+            }
+            Console.WriteLine();
         }
 
         public static void AllMangas()
@@ -188,6 +190,46 @@ namespace CadastroAniManga
                     Console.Write("**EXCLUÍDO**");
                 Console.WriteLine();
             }
+            Console.WriteLine();
+        }
+
+        public static void AnimeInfo()
+        {
+            Console.WriteLine("----- ANIME INFO -----");
+            Console.WriteLine();
+            Console.Write("Id: ");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            if(id < anirep.ProxId())
+            {
+                if(!anirep.BuscaPorId(id).getAtivo())
+                    Console.WriteLine("** EXCLUÍDO **");
+                Console.Write(anirep.BuscaPorId(id).ToString());
+            }
+            else
+                Console.Write(NoAnimeIdError);
+
+            Console.WriteLine();
+        }
+
+        public static void MangaInfo()
+        {
+            Console.WriteLine("----- MANGA INFO -----");
+            Console.WriteLine();
+            Console.Write("Id: ");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            if(id < manrep.ProxId())
+            {
+                if(!manrep.BuscaPorId(id).getAtivo())
+                    Console.WriteLine("** EXCLUÍDO **");
+                Console.Write(manrep.BuscaPorId(id).ToString());
+            }
+            else
+                Console.Write(NoMangaIdError);
+
             Console.WriteLine();
         }
 
