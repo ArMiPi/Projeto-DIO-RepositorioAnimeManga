@@ -33,7 +33,7 @@ namespace CadastroAniManga
                     AddAnime();
                     break;
                 case "2":
-                    //AddManga();
+                    AddManga();
                     break;
                 case "3":
                     //RmvAnime();
@@ -45,7 +45,7 @@ namespace CadastroAniManga
                     AllAnimes();
                     break;
                 case "6":
-                    //AllMangas();
+                    AllMangas();
                     break;
                 case "7":
                     //AnimeInfo();
@@ -97,6 +97,36 @@ namespace CadastroAniManga
             Console.WriteLine("Anime adicionado");
         }
 
+        public static void AddManga()
+        {
+            Console.WriteLine("----- INSERIR MANGA -----");
+            Console.WriteLine();
+            Console.Write("Título: ");
+            string titulo = Console.ReadLine();
+            ListarGeneros();
+            Console.WriteLine("Adicionar gêneros (-1 para sair)");
+            List<Genero> generos = new List<Genero>();
+            for(int g = int.Parse(Console.ReadLine()); g != -1; g = int.Parse(Console.ReadLine()))
+                generos.Add((Genero)g);
+            Console.Write("Descrição: ");
+            string descricao = Console.ReadLine();
+            Console.Write("Ano: ");
+            int ano = int.Parse(Console.ReadLine());
+            Console.Write("Autor: ");
+            string autor = Console.ReadLine();
+
+            Manga manga = new Manga(id: manrep.ProxId(), 
+                                      titulo: titulo, 
+                                      generos: generos, 
+                                      descricao: descricao, 
+                                      ano: ano, 
+                                      autor: autor);
+
+            manrep.InsereItem(manga);
+            Console.WriteLine();
+            Console.WriteLine("Manga adicionado");
+        }
+
         public static void AllAnimes()
         {
             Console.WriteLine("----- ALL ANIMES -----");
@@ -110,6 +140,18 @@ namespace CadastroAniManga
             Console.WriteLine();
         }
 
+        public static void AllMangas()
+        {
+            Console.WriteLine("----- ALL MANGAS -----");
+            foreach(Manga m in manrep.Lista())
+            {
+                Console.Write($"#{m.Id} - {m.getTitulo()} ");
+                if(!m.getAtivo())
+                    Console.Write("**EXCLUÍDO**");
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
         private static void ListarGeneros()
         {
             Console.WriteLine("Gêneros:");
