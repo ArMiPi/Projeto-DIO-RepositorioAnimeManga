@@ -26,18 +26,12 @@ namespace CadastroAniManga
 
         public void RemoveItem(int id)
         {
-            if(IdExists(id))
-                listaMangas[id].Excluir();
-            else
-                Console.WriteLine(ItemNaoExiste);
+            listaMangas[id].Excluir();
         }
 
         public void AtualizarItem(int id, Manga item)
         {
-            if(id >= ProxId())
-                Console.WriteLine(ItemNaoExiste);    
-            else
-                listaMangas[id] = item;
+            listaMangas[id] = item;
         }
 
         public int ProxId()
@@ -45,11 +39,14 @@ namespace CadastroAniManga
             return listaMangas.Count;
         }
 
-        public bool IdExists(int id)
+        public int VerificaId(int id)
         {
-            if(id >= ProxId() || !listaMangas[id].getAtivo())
-                return false;
-            return true;
+            if(id >= ProxId())
+                return -1;
+            else if(listaMangas[id].getAtivo())
+                return 0;
+            else
+                return 1;
         }
     }
 }

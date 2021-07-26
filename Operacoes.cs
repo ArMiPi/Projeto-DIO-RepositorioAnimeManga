@@ -57,10 +57,10 @@ namespace CadastroAniManga
                     MangaInfo();
                     break;
                 case "9":
-                    //AtualizarAnime();
+                    AtualizarAnime();
                     break;
                 case "10":
-                    //AtualizarManga();
+                    AtualizarManga();
                     break;
                 case "C":
                     Console.Clear();
@@ -141,7 +141,7 @@ namespace CadastroAniManga
             int id = int.Parse(Console.ReadLine());
 
             Console.WriteLine();
-            if(anirep.IdExists(id))
+            if(anirep.VerificaId(id) == 0)
             {
                 anirep.RemoveItem(id);
                 Console.WriteLine("Anime excluido");
@@ -158,7 +158,7 @@ namespace CadastroAniManga
             int id = int.Parse(Console.ReadLine());
 
             Console.WriteLine();
-            if(manrep.IdExists(id))
+            if(manrep.VerificaId(id) == 0)
             {
                 manrep.RemoveItem(id);
                 Console.WriteLine("Manga excluido");
@@ -201,11 +201,13 @@ namespace CadastroAniManga
             int id = int.Parse(Console.ReadLine());
             Console.WriteLine();
 
-            if(id < anirep.ProxId())
+            if(anirep.VerificaId(id) == 0)
             {
-                if(!anirep.BuscaPorId(id).getAtivo())
+                Animes anime = anirep.BuscaPorId(id);
+
+                if(!anime.getAtivo())
                     Console.WriteLine("** EXCLUÍDO **");
-                Console.Write(anirep.BuscaPorId(id).ToString());
+                Console.Write(anime.ToString());
             }
             else
                 Console.Write(NoAnimeIdError);
@@ -221,16 +223,118 @@ namespace CadastroAniManga
             int id = int.Parse(Console.ReadLine());
             Console.WriteLine();
 
-            if(id < manrep.ProxId())
+            if(manrep.VerificaId(id) == 0)
             {
-                if(!manrep.BuscaPorId(id).getAtivo())
+                Manga manga = manrep.BuscaPorId(id);
+
+                if(!manga.getAtivo())
                     Console.WriteLine("** EXCLUÍDO **");
-                Console.Write(manrep.BuscaPorId(id).ToString());
+                Console.Write(manga.ToString());
             }
             else
                 Console.Write(NoMangaIdError);
 
             Console.WriteLine();
+        }
+
+        public static void AtualizarAnime()
+        {
+            Console.WriteLine("----- ATUALIZAR ANIME -----");
+            Console.Write("Id: ");
+            int id = int.Parse(Console.ReadLine());
+
+            if(anirep.VerificaId(id) == -1)
+                Console.Write(NoAnimeIdError);
+            else
+            {
+                Animes anime = anirep.BuscaPorId(id);
+                Console.WriteLine();
+                Console.WriteLine("----- DETALHES DO ANIME -----");
+                Console.WriteLine();
+
+                if(!anime.getAtivo())
+                    Console.WriteLine("** EXCLUÍDO **");
+                Console.WriteLine(anime.ToString());
+                Console.WriteLine();
+
+                Console.WriteLine("----- NOVO ANIME -----");
+                Console.WriteLine();
+                Console.Write("Título: ");
+                string titulo = Console.ReadLine();
+                ListarGeneros();
+                Console.WriteLine("Adicionar gêneros (-1 para sair)");
+                List<Genero> generos = new List<Genero>();
+                for(int g = int.Parse(Console.ReadLine()); g != -1; g = int.Parse(Console.ReadLine()))
+                    generos.Add((Genero)g);
+                Console.Write("Descrição: ");
+                string descricao = Console.ReadLine();
+                Console.Write("Ano: ");
+                int ano = int.Parse(Console.ReadLine());
+                Console.Write("Studio: ");
+                string studio = Console.ReadLine();
+
+                Animes ani = new Animes(id: id,
+                                        titulo: titulo,
+                                        generos: generos,
+                                        descricao: descricao,
+                                        ano: ano,
+                                        studio: studio);
+                
+                anirep.Lista()[id] = ani;
+
+                Console.WriteLine();
+                Console.WriteLine("Anime atualizado");
+            }
+        }
+
+        public static void AtualizarManga()
+        {
+            Console.WriteLine("----- ATUALIZAR MANGA -----");
+            Console.Write("Id: ");
+            int id = int.Parse(Console.ReadLine());
+
+            if(manrep.VerificaId(id) == -1)
+                Console.Write(NoAnimeIdError);
+            else
+            {
+                Manga manga = manrep.BuscaPorId(id);
+                Console.WriteLine();
+                Console.WriteLine("----- DETALHES DO MANGA -----");
+                Console.WriteLine();
+
+                if(!manga.getAtivo())
+                    Console.WriteLine("** EXCLUÍDO **");
+                Console.WriteLine(manga.ToString());
+                Console.WriteLine();
+
+                Console.WriteLine("----- NOVO MANGA -----");
+                Console.WriteLine();
+                Console.Write("Título: ");
+                string titulo = Console.ReadLine();
+                ListarGeneros();
+                Console.WriteLine("Adicionar gêneros (-1 para sair)");
+                List<Genero> generos = new List<Genero>();
+                for(int g = int.Parse(Console.ReadLine()); g != -1; g = int.Parse(Console.ReadLine()))
+                    generos.Add((Genero)g);
+                Console.Write("Descrição: ");
+                string descricao = Console.ReadLine();
+                Console.Write("Ano: ");
+                int ano = int.Parse(Console.ReadLine());
+                Console.Write("Autor: ");
+                string autor = Console.ReadLine();
+
+                Manga man = new Manga(id: id,
+                                        titulo: titulo,
+                                        generos: generos,
+                                        descricao: descricao,
+                                        ano: ano,
+                                        autor: autor);
+                
+                manrep.Lista()[id] = man;
+
+                Console.WriteLine();
+                Console.WriteLine("Manga atualizado");
+            }
         }
 
         private static void ListarGeneros()

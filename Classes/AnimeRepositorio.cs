@@ -39,11 +39,14 @@ namespace CadastroAniManga
             return listaAnimes.Count;
         }
 
-        public bool IdExists(int id)
+        public int VerificaId(int id)
         {
-            if(id >= ProxId() || !listaAnimes[id].getAtivo())
-                return false;
-            return true;
+            if(id >= ProxId())
+                return -1;
+            else if(listaAnimes[id].getAtivo())
+                return 0;
+            else
+                return 1;
         }
     }
 }

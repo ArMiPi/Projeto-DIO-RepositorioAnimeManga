@@ -12,7 +12,7 @@ namespace CadastroAniManga
         private string Autor { get; set; }
         private bool Ativo { get; set; }
 
-        public Manga(int id, string titulo, List<Genero> generos, string descricao, int ano, string autor)
+        public Manga(int id, string titulo, List<Genero> generos, string descricao, int ano, string autor, bool ativo = true)
         {
             Id = id;
             Titulo = titulo;
@@ -20,7 +20,7 @@ namespace CadastroAniManga
             Descricao = descricao;
             Ano = ano;
             Autor = autor;
-            Ativo = true;
+            Ativo = ativo;
         }
 
         public string getTitulo()

@@ -59,11 +59,12 @@ namespace CadastroAniManga.Interfaces
             Entrada:
                 - int id: Número identificador do item
             Saída:
-                - bool
+                - int : [-1, 0, 1]
             Descrição:
-                - Retorna true caso o id represente um item presente na lista
-                - Retorna false caso o id represente um item exluído ou que não pertence à lista
+                - Retorna -1 caso o item não pertença à lista
+                - Retorna 0 caso o item pertença à lista
+                - Retorna -1 caso o item tenha sido excluído
         */
-        bool IdExists(int id);
+        int VerificaId(int id);
     }
 }
