@@ -21,6 +21,7 @@ namespace CadastroAniManga
             Console.WriteLine("8 - Exibir detalhes de um Manga");
             Console.WriteLine("9 - Atualizar um Anime");
             Console.WriteLine("10 - Atualizar um Manga");
+            Console.WriteLine("C - Limpar a tela");
             Console.WriteLine("X - Sair");
             Console.WriteLine();
         }
@@ -36,10 +37,10 @@ namespace CadastroAniManga
                     AddManga();
                     break;
                 case "3":
-                    //RmvAnime();
+                    RmvAnime();
                     break;
                 case "4":
-                    //RmvManga();
+                    RmvManga();
                     break;
                 case "5":
                     AllAnimes();
@@ -58,6 +59,9 @@ namespace CadastroAniManga
                     break;
                 case "10":
                     //AtualizaManga();
+                    break;
+                case "C":
+                    Console.Clear();
                     break;
                 case "X":
                     break;
@@ -140,6 +144,40 @@ namespace CadastroAniManga
             Console.WriteLine();
         }
 
+        public static void RmvAnime()
+        {
+            Console.WriteLine("----- REMOVER ANIME -----");
+            Console.WriteLine();
+            Console.Write("Id: ");
+            int id = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            if(anirep.IdExists(id))
+            {
+                anirep.RemoveItem(id);
+                Console.WriteLine("Anime excluido");
+            }
+            else
+                Console.WriteLine("Nenhum anime com este id encontrado");
+        }
+
+        public static void RmvManga()
+        {
+            Console.WriteLine("----- REMOVER MANGA -----");
+            Console.WriteLine();
+            Console.Write("Id: ");
+            int id = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            if(manrep.IdExists(id))
+            {
+                manrep.RemoveItem(id);
+                Console.WriteLine("Manga excluido");
+            }
+            else
+                Console.WriteLine("Nenhum manga com este id encontrado");
+        }
+
         public static void AllMangas()
         {
             Console.WriteLine("----- ALL MANGAS -----");
@@ -152,6 +190,7 @@ namespace CadastroAniManga
             }
             Console.WriteLine();
         }
+
         private static void ListarGeneros()
         {
             Console.WriteLine("Gêneros:");

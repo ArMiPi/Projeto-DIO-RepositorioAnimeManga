@@ -45,7 +45,7 @@ namespace CadastroAniManga
             return listaMangas.Count;
         }
 
-        private bool IdExists(int id)
+        public bool IdExists(int id)
         {
             if(id >= ProxId() || !listaMangas[id].getAtivo())
                 return false;

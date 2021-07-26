@@ -27,8 +27,6 @@ namespace CadastroAniManga.Interfaces
                 - T item: Item a ser inserido na lista
             Descrição:
                 - Insere um item na lista. 
-                - Caso exista um item com mesmo id, será apresentada uma mensagem de erro
-                  e o item não será inserido
         */
         void InsereItem(T item);
 
@@ -37,8 +35,6 @@ namespace CadastroAniManga.Interfaces
                 - int id: Número identificador do item
             Descrição:
                 - Remove um item com base em seu id. 
-                - Se o item não existir/estiver desativado, será apenas apresentada uma mensagem indicando
-                  que o item não está presente na lista
         */
         void RemoveItem(int id);
 
@@ -48,8 +44,6 @@ namespace CadastroAniManga.Interfaces
                 - T item: Item atualizado
             Descrição:
                 - Substitui o item que possuir o id passado pelo novo item
-                - Caso não exista um item com o id especificado, é apresentada uma mensagem indicando
-                  que o item não está presente na lista
         */
         void AtualizarItem(int id, T item);
 
@@ -60,5 +54,16 @@ namespace CadastroAniManga.Interfaces
                 - Retorna um inteiro que representa o próximo identificador disponível
         */
         int ProxId();
+
+        /*
+            Entrada:
+                - int id: Número identificador do item
+            Saída:
+                - bool
+            Descrição:
+                - Retorna true caso o id represente um item presente na lista
+                - Retorna false caso o id represente um item exluído ou que não pertence à lista
+        */
+        bool IdExists(int id);
     }
 }
