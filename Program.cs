@@ -6,7 +6,15 @@ namespace CadastroAniManga
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string opt = "0";
+
+            while(!opt.Equals("X"))
+            {
+                Operacoes.Menu();
+                opt = Console.ReadLine().ToUpper();
+                Console.WriteLine();
+                Operacoes.Opcao(opt);
+            }
         }
     }
 }

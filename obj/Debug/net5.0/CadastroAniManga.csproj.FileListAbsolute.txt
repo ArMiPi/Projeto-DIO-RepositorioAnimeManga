@@ -1,0 +1,16 @@
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\bin\Debug\net5.0\CadastroAniManga.exe
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\bin\Debug\net5.0\CadastroAniManga.deps.json
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\bin\Debug\net5.0\CadastroAniManga.runtimeconfig.json
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\bin\Debug\net5.0\CadastroAniManga.runtimeconfig.dev.json
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\bin\Debug\net5.0\CadastroAniManga.dll
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\bin\Debug\net5.0\ref\CadastroAniManga.dll
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\bin\Debug\net5.0\CadastroAniManga.pdb
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\obj\Debug\net5.0\CadastroAniManga.csproj.AssemblyReference.cache
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\obj\Debug\net5.0\CadastroAniManga.GeneratedMSBuildEditorConfig.editorconfig
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\obj\Debug\net5.0\CadastroAniManga.AssemblyInfoInputs.cache
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\obj\Debug\net5.0\CadastroAniManga.AssemblyInfo.cs
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\obj\Debug\net5.0\CadastroAniManga.csproj.CoreCompileInputs.cache
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\obj\Debug\net5.0\CadastroAniManga.dll
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\obj\Debug\net5.0\ref\CadastroAniManga.dll
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\obj\Debug\net5.0\CadastroAniManga.pdb
+D:\Arthur\Prog\Projetos\C#\DIO\CadastroAniManga\obj\Debug\net5.0\CadastroAniManga.genruntimeconfig.cache
